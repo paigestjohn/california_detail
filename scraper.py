@@ -149,9 +149,9 @@ def incrementstartingvalue():
 
 # only on first run, to reset. Then comment out.
 scraperwiki.sqlite.save_var('startingvalue', 0)
-scraperwiki.sqlite.attach("california_sex_offenders_2") 
+scraperwiki.sqlite.attach("california_megan") 
 
-records = scraperwiki.sqlite.select("count(*) as count from california_sex_offenders_2.swdata")
+records = scraperwiki.sqlite.select("count(*) as count from california_megan.swdata")
 
 recordscount = records[0]['count']
 
@@ -163,7 +163,7 @@ print startingvalue
 
 while startingvalue <= recordscount:
     startingvalue = scraperwiki.sqlite.get_var('startingvalue')
-    uniqueidsql = scraperwiki.sqlite.select("uniqueid from california_sex_offenders_2.swdata order by uniqueid asc limit "+str(startingvalue)+" , 1")
+    uniqueidsql = scraperwiki.sqlite.select("uniqueid from california_megan.swdata order by uniqueid asc limit "+str(startingvalue)+" , 1")
     #did we get back a uniqueid or an empty result?
     if uniqueidsql == []:
         break
